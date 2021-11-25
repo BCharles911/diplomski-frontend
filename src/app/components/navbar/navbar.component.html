@@ -20,8 +20,8 @@
             <a href="" class="py-4 px-2 text-gray-500 font-mono tracking-widest hover:text-dashlane transition duration-300">SERVICE</a>
             <a href="" class="py-4 px-2 text-gray-500 font-mono tracking-widest hover:text-dashlane transition duration-300">ABOUT</a>
             <a href="" class="py-4 px-2 text-gray-500 font-mono tracking-widest hover:text-dashlane transition duration-300">CONTACT US</a>
-						<a *ngIf="!loggedShow"  href="" class="py-2 px-2 font-mono tracking-widest text-gray-500 rounded hover:bg-dashlane hover:text-white transition duration-300">SIGN IN</a>
-						<a  *ngIf="!loggedShow" href="" class="py-2 px-2 font-mono tracking-widest text-white bg-dashlane rounded-sm hover:bg-dashlane transition duration-300">SIGN UP</a>
+						<a *ngIf="!loggedShow" [routerLink]="['/public/login']"  href="" class="py-2 px-2 font-mono tracking-widest text-gray-500 rounded hover:bg-dashlane hover:text-white transition duration-300">SIGN IN</a>
+						<a  *ngIf="!loggedShow" [routerLink]="['/public/register']" href="" class="py-2 px-2 font-mono tracking-widest text-white bg-dashlane rounded-sm hover:bg-dashlane transition duration-300">SIGN UP</a>
             <a  *ngIf="loggedShow" (click)="logout()" href="" class="py-2 px-2 font-mono tracking-widest text-white bg-dashlane rounded-sm hover:bg-dashlane transition duration-300">LOG OUT</a>
 
           </div>

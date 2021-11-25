@@ -7,16 +7,19 @@ const routes: Routes = [
   {
     path: 'private',
     canActivate: [AuthGuard],
-    loadChildren: () => import ('./private/private.module').then(m => m.PrivateModule)
+    loadChildren: () => import ('./private/private.module').then(m => m.PrivateModule),
+    data: { animation: 'isRight'}
   },
   {
     path: 'public',
-    loadChildren: () => import ('./public/public.module').then(m => m.PublicModule)
+    loadChildren: () => import ('./public/public.module').then(m => m.PublicModule),
+    data: { animation: 'isRight'}
   },
   {
     path: '**',
     redirectTo: 'public',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    data: { animation: 'isRight'}
   },
 
 ];

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { NavbarService } from 'src/app/services/navbar.service';
+import '@themesberg/flowbite';
 
 @Component({
   selector: 'app-home',

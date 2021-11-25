@@ -1,1 +1,45 @@
-<p>register works!</p>
+<div class="min-h-screen bg-gray-100 text-gray-600 font-mono antialiased py-6 flex flex-col justify-center sm:py-12">
+  <div class="  relative py-3 sm:w-96  mx-auto text-center s">
+    <span class=" font-semibold tracking-widest text-6xl">REGISTER</span>
+    <div class="mt-4 bg-w shadow-md rounded-lg text-left">
+      <div class="h-2 bg-dashlane rounded-t-md"></div>
+      <div class="px-8 py-6">
+        <form [formGroup]="form">
+          <fieldset>
+            <label class="block font-semilight tracking-widest">First Name</label>
+            <input type="text" name="firstName" formControlName="firstName" placeholder="first name"
+              class="border w-full h-5 px-3 py-5 mt-2 mb-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-400 rounded-md" />
+            <label class="block font-semilight tracking-widest">Last Name</label>
+            <input type="text" name="lastName" formControlName="lastName" placeholder="last name"
+              class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-400 rounded-md" />
+            <label class="block font-semilight tracking-widest">Email</label>
+            <input type="text" name="email" formControlName="email" placeholder="Email"
+              class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-400 rounded-md" />
+            <label class="block font-semilight tracking-widest">Email</label>
+            <input type="text" name="email" formControlName="email" placeholder="Email"
+              class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-400 rounded-md" />
+            <label class="block font-semilight tracking-widest">Email</label>
+            <input type="text" name="email" formControlName="email" placeholder="Email"
+              class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-400 rounded-md" />
+            <label class="block font-semilight tracking-widest">Email</label>
+            <input type="text" name="email" formControlName="email" placeholder="Email"
+              class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-400 rounded-md" />
+
+            <label class="block font-semilight tracking-widest mt-3">Password</label>
+            <input type="password" name="password" formControlName="password" placeholder="Password"
+              class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-400 rounded-md" />
+
+            <div class="flex justify-between items-baseline">
+              <button type="submit" (click)="register()"
+                class="mt-4 bg-dashlane text-white py-2 px-6 font-semilight tracking-widest rounded-md hover:bg-dashlane">Login</button>
+              <a href="#" class="text-xs ml-5 hover:underline sm:ml-0">Forgot Password?</a>
+            </div>
+
+          </fieldset>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

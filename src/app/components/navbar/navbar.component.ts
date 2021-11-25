@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
 
   logout(){
     this.authService.logout();
-    this.router.navigate(['public/login']);
+    window.location.replace('http://localhost:4200/public/home')
   }
   toggleNavbar(){
     console.log(this.showMenu)

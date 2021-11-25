@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { NavbarService } from 'src/app/services/navbar.service';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  form!: FormGroup;
+  isLoggedIn: boolean = false;
+  errorMessage: string = '';
+  roles: string[] = [];
+
+  constructor(public nav: NavbarService) { }
 
   ngOnInit(): void {
+    this.nav.hide();
+  }
+
+  register(){
+
   }
 
 }
