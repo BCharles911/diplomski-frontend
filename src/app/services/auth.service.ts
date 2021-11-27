@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserI } from '../model/user.interface';
 import * as moment from 'moment';
-import { UserLogin } from '../model/UserLogin';
+
 
 
 const AUTH_API = 'http://localhost:3000/api/users'

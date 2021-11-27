@@ -1,45 +1,120 @@
-<div class="min-h-screen bg-gray-100 text-gray-600 font-mono antialiased py-6 flex flex-col justify-center sm:py-12">
+<div class="min-h-screen bg-gray-100 text-gray-600 font-mono  py-6 flex flex-col justify-center sm:py-12">
   <div class="  relative py-3 sm:w-96  mx-auto text-center s">
-    <span class=" font-semibold tracking-widest text-6xl">REGISTER</span>
-    <div class="mt-4 bg-w shadow-md rounded-lg text-left">
-      <div class="h-2 bg-dashlane rounded-t-md"></div>
+    <span class=" font-sans font-semibold tracking-widest text-2xl md:text-4xl">REGISTRACIJA</span>
+    <div class="mt-4 mx-7 bg-w shadow-md rounded-lg text-left md:mx-0">
+      <div class="h-2 bg-mine-shaft-500 rounded-t-md"></div>
       <div class="px-8 py-6">
         <form [formGroup]="form">
           <fieldset>
-            <label class="block font-semilight tracking-widest">First Name</label>
-            <input type="text" name="firstName" formControlName="firstName" placeholder="first name"
-              class="border w-full h-5 px-3 py-5 mt-2 mb-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-400 rounded-md" />
-            <label class="block font-semilight tracking-widest">Last Name</label>
-            <input type="text" name="lastName" formControlName="lastName" placeholder="last name"
-              class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-400 rounded-md" />
-            <label class="block font-semilight tracking-widest">Email</label>
-            <input type="text" name="email" formControlName="email" placeholder="Email"
-              class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-400 rounded-md" />
-            <label class="block font-semilight tracking-widest">Email</label>
-            <input type="text" name="email" formControlName="email" placeholder="Email"
-              class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-400 rounded-md" />
-            <label class="block font-semilight tracking-widest">Email</label>
-            <input type="text" name="email" formControlName="email" placeholder="Email"
-              class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-400 rounded-md" />
-            <label class="block font-semilight tracking-widest">Email</label>
-            <input type="text" name="email" formControlName="email" placeholder="Email"
-              class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-400 rounded-md" />
+            <mat-form-field class=" w-full" appearance="outline">
+              <mat-label>Ime</mat-label>
+              <input name="firstName" formControlName="firstName" matInput>
+            </mat-form-field>
 
-            <label class="block font-semilight tracking-widest mt-3">Password</label>
-            <input type="password" name="password" formControlName="password" placeholder="Password"
-              class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-400 rounded-md" />
+            <mat-form-field class=" w-full" appearance="outline">
+              <mat-label>Prezime</mat-label>
+              <input name="lastName" formControlName="lastName" matInput>
+            </mat-form-field>
+            <mat-form-field class=" w-full" appearance="outline">
+              <mat-label>Korisnicko ime</mat-label>
+              <input name="username" formControlName="username" matInput>
+              <small *ngIf=" f.username.invalid && f.username.touched && f.username.errors" class="text-red-500">Korisnicko ime mora imati barem 6 karaktera</small>
+            </mat-form-field>
+
+            <mat-form-field class=" w-full" appearance="outline">
+              <mat-label  >Email</mat-label>
+              <input name="email" formControlName="email" [email]="true" matInput>
+              <small *ngIf=" f.email.invalid && f.email.touched && f.email.errors" class="text-red-500">Email adresa nije u ispravnom formatu</small>
+
+            </mat-form-field>
+
+            <mat-form-field class=" w-full" appearance="outline">
+              <mat-label  >Broj telefona</mat-label>
+              <input name="phoneNumber" formControlName="phoneNumber" matInput>
+              <small *ngIf=" f.phoneNumber.invalid && f.phoneNumber.touched && f.phoneNumber.errors" class="text-red-500">Broj telefona nije ispravan</small>
+
+            </mat-form-field>
+
+            <mat-form-field class="w-full" appearance="outline">
+              <mat-label>Odaberi ulogu</mat-label>
+              <mat-select formControlName="role">
+                <mat-option value="employee">radnik</mat-option>
+                <mat-option value="employer">poslodavac</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
+            <!-- <mat-form-field class="w-full" appearance="outline">
+              <mat-label>Odaberi grad</mat-label>
+              <mat-select formControlName="city">
+
+                <mat-option *ngFor="let city of cityList" value="city">{{city.city}}
+                  <small>{{city.zip}}</small>
+                </mat-option>
+              </mat-select>
+            </mat-form-field> -->
+
+
+            <form class="example-form">
+              <mat-form-field class="w-full" appearance="outline">
+                <mat-label>Odaberi grad</mat-label>
+                <input  matInput [formControl]="myControl"  [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                  <mat-option *ngFor="let option of filteredCities | async" [value]="option">
+                    {{option.city}}
+
+                    <small class="text- opacity-70">  {{option.zip}}</small>
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </form>
+
+
+
+            <mat-form-field class=" w-full" appearance="outline">
+              <mat-label>Unesite lozinku</mat-label>
+              <input name="password" formControlName="password"  matInput [type]="hide ? 'password' : 'text'">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <small *ngIf="f.password.invalid && f.password.touched && f.password.errors?.required">Morate uneti lozinku</small>
+            </mat-form-field>
+            <mat-form-field class=" w-full" appearance="outline">
+              <mat-label>Potvrdite lozinku</mat-label>
+              <input name="confirm_password" formControlName="confirm_password"  matInput [type]="hide ? 'password' : 'text'">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <small *ngIf="f.confirm_password.touched && f.confirm_password.invalid && f.confirm_password.errors?.confirmedValidator" class="text-red-500">Lozinke moraju da se slazu!</small>
+            </mat-form-field>
+            <div class="text-red-600 text-xs font-sans" *ngIf="">
+
+
+          </div>
+
+
+            <mat-form-field class=" w-full" appearance="outline">
+              <mat-label>Datum rodjenja</mat-label>
+              <input matInput name="dateOfBirth" formControlName="dateOfBirth" [matDatepicker]="picker">
+              <mat-datepicker-toggle matSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
 
             <div class="flex justify-between items-baseline">
-              <button type="submit" (click)="register()"
-                class="mt-4 bg-dashlane text-white py-2 px-6 font-semilight tracking-widest rounded-md hover:bg-dashlane">Login</button>
-              <a href="#" class="text-xs ml-5 hover:underline sm:ml-0">Forgot Password?</a>
+              <button mat-raised-button color="primary" type="submit" [disabled]="form.valid" (click)="register()">Registruj se</button>
+              <a [routerLink]="['/public/login']" class="text-xs ml-5 font-sans hover:underline sm:ml-0">Ulogujte se</a>
             </div>
-
           </fieldset>
 
         </form>
+
+
 
       </div>
     </div>
   </div>
 </div>
+

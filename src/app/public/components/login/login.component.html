@@ -8,18 +8,23 @@
         [formGroup]="form">
           <fieldset>
 
-            <label class="block font-semilight tracking-widest">Username or email</label>
-            <input type="text" name="email" formControlName="email" placeholder="Email"
-              class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-400 rounded-md" />
 
-            <label class="block font-semilight tracking-widest mt-3">Password</label>
-            <input type="password" name="password" formControlName="password" placeholder="Password"
-              class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-400 rounded-md" />
+            <mat-form-field class=" w-full" appearance="outline">
+              <mat-label>Korisnicko ime</mat-label>
+              <input name="email" formControlName="email" matInput>
+            </mat-form-field>
+
+            <mat-form-field class=" w-full" appearance="outline">
+              <mat-label>Unesite lozinku</mat-label>
+              <input name="password" formControlName="password"  matInput [type]="hide ? 'password' : 'text'">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <small *ngIf="f.password.invalid && f.password.touched && f.password.errors?.required">Morate uneti lozinku</small>
+            </mat-form-field>
 
             <div class="flex justify-between items-baseline">
-              <button type="submit"
-                (click)="login()"
-                class="mt-4 bg-dashlane text-white py-2 px-6 font-semilight tracking-widest rounded-md hover:bg-dashlane">Login</button>
+              <button mat-raised-button color="primary" (click)="login()">Login</button>
               <a href="#" class="text-xs ml-5 hover:underline sm:ml-0">Forgot Password?</a>
             </div>
 

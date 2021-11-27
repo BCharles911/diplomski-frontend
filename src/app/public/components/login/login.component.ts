@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserLogin } from 'src/app/model/UserLogin';
+import { UserLogin } from 'src/app/model/user-login';
 import { AuthService } from 'src/app/services/auth.service';
 import { NavbarService } from 'src/app/services/navbar.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   errorMessage: string = '';
   roles: string[] = [];
   loginUser = new UserLogin();
-
+  hide = true;
 
   constructor(private fb: FormBuilder, private router: Router, private authService: AuthService, private tokenStorageService: TokenStorageService,
     public nav: NavbarService) {
@@ -30,6 +30,8 @@ export class LoginComponent implements OnInit {
     })
   }
 
+
+
   ngOnInit(): void {
     this.nav.hide();
     if(this.tokenStorageService.getToken()) {
@@ -37,6 +39,10 @@ export class LoginComponent implements OnInit {
       this.isLoggedIn = true;
       window.location.replace('http://localhost:4200/public/home')
     }
+  }
+
+  get f(){
+    return this.form.controls;
   }
 
 
