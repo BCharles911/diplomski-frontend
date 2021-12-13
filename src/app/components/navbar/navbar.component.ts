@@ -9,14 +9,16 @@ import { NavbarService } from 'src/app/services/navbar.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
+  homeComponent = 'bg-dashlane'
   toggle = false;
   open = false;
   showMenu = false;
+  role = '';
   @Input() loggedShow?: boolean;
   constructor(public nav: NavbarService, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.role = JSON.parse(window.localStorage.getItem('auth-user') || '{}').role
     console.log(this.loggedShow)
   }
 

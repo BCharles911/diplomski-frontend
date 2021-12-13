@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'public',
+    redirectTo: 'public/home',
     pathMatch: 'full',
     data: { animation: 'isRight'}
   },

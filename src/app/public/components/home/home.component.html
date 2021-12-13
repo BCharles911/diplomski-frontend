@@ -1,19 +1,33 @@
-<div class="grid grid-cols-4 gap-4 m-3 md:grid-cols-6 mt-10">
+<div  *ngFor="let job of jobs" class="grid grid-cols-4 gap-2 m-3 md:grid-cols-12 mt-10">
   <div></div>
-  <div class=" mx-4 md:mx-0 col-span-4">
+  <div class=" mx-4 md:mx-0 col-span-10">
     <div
-      class="w-5/5 bg-gray-100 hover:bg-gray-200 rounded-lg shadow-sm p-5  flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
-      <div class="flex flex-col sm:flex-row justify-start items-center gap-4">
-        <mat-card class="flex">
-          <mat-card-title>Actions Buttons</mat-card-title>
-          <mat-card-subtitle>Start</mat-card-subtitle>
-          <mat-card-actions>
-            <button mat-button>LIKE</button>
-            <button mat-button>SHARE</button>
-          </mat-card-actions>
-        </mat-card>
+      class="w-5/5 bg-gray-50 hover:bg-gray-200 rounded-lg shadow-sm p-2  flex flex-col sm:flex-row justify-start  gap-2 sm:gap-0">
+      <mat-card class="w-full card-container">
+        <mat-card-subtitle > {{job.user?.firstName}}</mat-card-subtitle>
+        <mat-card-title>Setanje psa</mat-card-title>
+        <mat-card-content>
+          <p>{{job.jobDescription}}</p>
+          <p class="italic">A sta je ovo</p>
 
-      </div>
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+        <mat-card-actions >
+          <button class="float-right transform hover:scale-125 transition duration-500 ease-in-out" mat-icon-button><mat-icon>send</mat-icon></button>
+          <button class="float-right transform hover:scale-125 transition duration-500 ease-in-out" mat-icon-button><mat-icon>sort</mat-icon></button>
+        </mat-card-actions>
+        <mat-divider inset class="footer-divider"></mat-divider>
+        <mat-card-footer class="py-4 px-4 text-xs">
+
+          <mat-chip-list  aria-label="Fish selection">
+            <mat-chip class="text-xs font-light">Setanje pasa</mat-chip>
+            <mat-chip class="text-xs font-light">Odgovornost</mat-chip>
+            <mat-chip class="text-xs font-light">Strpljenje</mat-chip>
+          </mat-chip-list>
+        </mat-card-footer>
+      </mat-card>
+
     </div>
-    <div></div>
   </div>
+  <div></div>
+</div>

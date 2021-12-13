@@ -18,6 +18,11 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 @NgModule({
   declarations: [
     LoginComponent,
@@ -42,6 +47,10 @@ import {MatCardModule} from '@angular/material/card';
     MatTooltipModule,
     MatGridListModule,
     MatCardModule,
+    MatProgressBarModule,
+    MatDividerModule,
+    MatChipsModule,
+    MatToolbarModule,
   ],
   providers: [
     MatDatepickerModule,

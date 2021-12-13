@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { NavbarService } from 'src/app/services/navbar.service';
-import { ConfirmedValidator } from 'src/app/_common/confirmed.validator';
+import { ConfirmedValidator } from 'src/app/_common/custom.validator';
 import countries from 'src/app/_files/srbija-svi-gradovi.json';
 import {map, startWith} from 'rxjs/operators';
 import { UserService } from 'src/app/services/user.service';
@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
   hide = true;
   public cityList: City[] = countries;
   filteredCities?: Observable<City[]>;
-
+  errorRegistration = false;
   constructor(private fb: FormBuilder, public nav: NavbarService, private userService: UserService) { }
 
   ngOnInit(): void {
@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
       username: ['', [Validators.required, Validators.minLength(8)]],
 
       user: ['', Validators.required],
-      email: ['', Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],
+      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       password: ['', Validators.required],
       confirm_password: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
@@ -75,6 +75,11 @@ export class RegisterComponent implements OnInit {
         //window.location.replace('public/login');
       },
       err => {
+        this.errorRegistration = true;
+        setTimeout(() => {
+          this.errorRegistration = false;
+        }, 2000);
+        this.errorMessage = err.error.message;
         console.log(err.error.message)
       }
     )

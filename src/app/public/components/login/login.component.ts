@@ -56,9 +56,8 @@ export class LoginComponent implements OnInit {
         data => {
           this.loginUser = data;
           this.tokenStorageService.saveToken(this.loginUser.access_token, this.loginUser.expires_in);
-          this.tokenStorageService.saveUser(this.loginUser);
+          this.tokenStorageService.saveUser(JSON.stringify(this.loginUser.user));
           console.log(this.loginUser.token_type)
-
           this.isLoggedIn = true;
           this.isLoginFailed = false;
           window.location.replace('http://localhost:4200/public/home')
